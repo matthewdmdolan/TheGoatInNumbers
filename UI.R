@@ -1,3 +1,5 @@
+library(shinydashboard)
+
 # UI
 ui <- dashboardPage(
   dashboardHeader(title = "Messi: The Goat?"),
@@ -70,14 +72,8 @@ ui <- dashboardPage(
               fluidRow(
                 column(6, 
                        box(width = NULL,
-                           plotOutput("p6", height = "350px", width = "100%"), 
-                           title = "Games per Season", status = "primary", solidHeader = TRUE, collapsible = FALSE, badgeColor = "grey"
-                       )
-                ),
-                column(6, 
-                       box(width = NULL,
                            plotOutput("p7", height = "350px", width = "100%"), 
-                           title = "Games per Season", status = "primary", solidHeader = TRUE, collapsible = FALSE, badgeColor = "grey"
+                           title = "Messi's Most Frequent Assists by Teammate ", status = "primary", solidHeader = TRUE, collapsible = FALSE, badgeColor = "grey"
                        )
                 )
               )
@@ -98,17 +94,17 @@ ui <- dashboardPage(
 
 # Server
 server <- function(input, output) {
-
-  
   output$p1 <- renderPlot({ p1 }, bg = "grey", res = 80)
   output$p2 <- renderPlot({ p2 }, bg = "grey", res = 80)
   output$p3 <- renderPlot({ p3 }, bg = "grey", res = 80)
   output$p4 <- renderPlot({ p4 }, bg = "grey", res = 80)
   output$p5 <- renderPlot({ p5 }, bg = "grey", res = 80)
-  output$p6 <- renderPlot({ p6 }, bg = "grey", res = 80)
   output$p7 <- renderPlot({ p7 }, bg = "grey", res = 80)
   output$p8 <- renderPlot({ p8 }, bg = "grey", res = 80)
 }
+
+# Launch
+
 
 # Launch the Shiny app
 shinyApp(ui = ui, server = server)
